@@ -1,0 +1,20 @@
+clear;
+clc;
+
+wine = dlmread('wine.data',',');
+wine_labels = wine(:,1); % 分离数据中的labels
+wine_features = wine(:,2:end); % 分离数据中的features
+
+% Label为“1”的序号是：1~59
+% Label为“2”的序号是：60~130
+% Label为“3”的序号是：131~178
+% 将第一类的1-30,第二类的60-95,第三类的131-153做为训练集
+train_wine = [wine_data(1:30,:);wine_data(60:95,:);wine_data(131:153,:)];
+% 相应的训练集的标签也要分离出来
+train_wine_labels = [wine_label(1:30);wine_label(60:95);wine_label(131:153)];
+% 将第一类的31-59,第二类的96-130,第三类的154-178做为测试集
+test_wine = [wine_data(31:59,:);wine_data(96:130,:);wine_data(154:178,:)];
+% 相应的测试集的标签也要分离出来
+test_wine_labels = [wine_label(31:59);wine_label(96:130);wine_label(154:178)];
+
+train_labels = [wine_labels(1:30,:);wine_labels(60:30,:);wine_labels(1:30,:)]
